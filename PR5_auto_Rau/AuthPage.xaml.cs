@@ -43,6 +43,7 @@ namespace PR5_auto_Rau
                 txtUsername.Clear();
                 txtUsername.Visibility = (Visibility)1;
                 btnEnter.Visibility = (Visibility)1;
+                btnReg.Visibility = (Visibility)1;
                 txtBlockCaptcha.Visibility = Visibility;
                 btnConfCaptcha.Visibility = Visibility;
                 String allowchar = "";
@@ -70,7 +71,12 @@ namespace PR5_auto_Rau
 
         private void btnConfCaptcha_Click(object sender, RoutedEventArgs e)
         {
-            if (txtCaptcha.Text == txtBlockCaptcha.Text)
+            Captcha(txtCaptcha.Text, txtBlockCaptcha.Text);
+        }
+
+        public bool Captcha(string captchaContent, string enterCaptcha)
+        {
+            if (captchaContent == enterCaptcha)
             {
                 txtCaptcha.Visibility = (Visibility)1;
                 txtBlockCaptcha.Text = "";
@@ -82,8 +88,10 @@ namespace PR5_auto_Rau
                 btnEnter.Visibility = Visibility;
                 txtBlockCaptcha.Visibility = (Visibility)1;
                 btnConfCaptcha.Visibility = (Visibility)1;
+                btnReg.Visibility = Visibility;
+                return true;
             }
-
+            else return false;
         }
 
         public bool Auth(string login, string password)
@@ -109,6 +117,11 @@ namespace PR5_auto_Rau
 
                 return true;
             }
+        }
+
+        private void btnReg_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RegPage());
         }
     }
 }
