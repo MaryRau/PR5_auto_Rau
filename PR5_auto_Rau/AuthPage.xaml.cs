@@ -104,7 +104,7 @@ namespace PR5_auto_Rau
 
             using (var db = new UsersEntities())
             {
-                var user = db.Users.AsNoTracking().FirstOrDefault(u => u.Логин == login && u.Пароль == password);
+                var user = db.Users.AsNoTracking().FirstOrDefault(u => u.Логин.ToLower() == login.ToLower() && u.Пароль == password);
 
                 if (user == null)
                 {

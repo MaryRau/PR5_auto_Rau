@@ -61,7 +61,7 @@ namespace PR5_auto_Rau
                 Фото = txtPhoto.Text
             };
 
-            var user = db.Users.AsNoTracking().FirstOrDefault(u => u.Логин == login && u.Пароль == password);
+            var user = db.Users.AsNoTracking().FirstOrDefault(u => u.Логин.ToLower() == login.ToLower() && u.Пароль == password);
             if (user == null)
             {
                 db.Users.Add(userObject);

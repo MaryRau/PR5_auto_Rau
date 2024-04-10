@@ -15,6 +15,9 @@ namespace UnitTestProject
             Assert.IsFalse(page.Auth("user1", "12345"));
             Assert.IsFalse(page.Auth("", ""));
             Assert.IsFalse(page.Auth(" ", " "));
+            Assert.IsTrue(page.Captcha("432JGn", "432JGn"));
+            Assert.IsFalse (page.Captcha("432JGn", "762JGn"));
+            Assert.IsTrue(page.Auth("ELIZOR@gmai,com", "yntiRS"));
         }
     }
 }
